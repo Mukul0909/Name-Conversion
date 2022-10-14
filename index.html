@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Name Conversion</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="naming_conversion">
+      <input placeholder="Enter the text" type="text" id="mytext">
+      <button id="convert-btn">Convert</button>
+      <div class="cases_div">
+        <div class="case_div">
+          <h1>Camel Case:</h1>
+          <p id="camel-case"></p>
+        </div>
+        <div class="case_div">
+          <h1>Pascal Case:</h1>
+          <p id="pascal-case"></p>
+        </div>
+        <div class="case_div">
+          <h1>Snake Case:</h1>
+          <p id="snake-case"></p>
+        </div>
+        <div class="case_div">
+          <h1>Screaming Snake Case:</h1>
+          <p id="screaming-snake-case"></p>
+        </div>
+        <div class="case_div">
+          <h1>Kebab Case:</h1>
+          <p id="kebab-case"></p>
+        </div>
+        <div class="case_div">
+          <h1>Screaming Kebab Case:</h1>
+          <p id="screaming-kebab-case"></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      let text = document.getElementById('mytext');
+      let btn = document.getElementById('convert-btn');
+      let camelcase = document.querySelector('#camel-case');
+      let pascalcase = document.querySelector('#pascal-case');
+      let snakecase = document.querySelector('#snake-case');
+      let kebabcase = document.querySelector('#kebab-case');
+      let screamingsnake = document.querySelector('#screaming-snake-case');
+      let screamingkebab = document.querySelector('#screaming-kebab-case');
+
+    btn.addEventListener('click', () =>{
+    camelcase.innerHTML = tocamelCase(text.value);
+    snakecase.innerHTML = tosnake_case(text.value);
+    pascalcase.innerHTML = toPascalCase(text.value);
+    kebabcase.innerHTML = tokebabcase(text.value);
+    screamingsnake.innerHTML = toscreaming_snake_case(text.value);
+    screamingkebab.innerHTML = toscreaming_kebabcase(text.value);
+}
+)
+  function tocamelCase(item){
+      let str = "";
+      str+=item[0].toLowerCase();
+      for(let i=1; i<item.length; ++i){
+          if(item[i]==" ")
+          { str += item[i+1].toUpperCase();
+          ++i;
+          }
+          else{
+              str+=item[i];
+          }
+      }
+
+      return str;
+  }
+
+  function tosnake_case(item){
+      let str = "";
+      str+=item[0].toLowerCase();
+      for(let i=1; i<item.length; ++i){
+          if(item[i]==" ")
+          { str+= "_";
+          }
+          else{
+              str+=item[i].toLowerCase();
+          }
+      }
+
+      return str;
+  }
+
+  function toPascalCase(item){
+      let str = "";
+      str+=item[0].toUpperCase();
+      for(let i=1; i<item.length; ++i){
+          if(item[i]==" ")
+          { str+= item[i+1].toUpperCase();
+            ++i;  
+          }
+          else{
+              str+=item[i];
+          }
+      }
+
+      return str;
+  }
+
+  function tokebabcase(item){
+      let str = "";
+      str+=item[0].toLowerCase();
+      for(let i=1; i<item.length; ++i){
+          if(item[i]==" ")
+          { str+= "-";
+          }
+          else{
+              str+=item[i].toLowerCase();
+          }
+      }
+      return str;
+  }
+
+  function toscreaming_snake_case(item){
+      let str = "";
+      str+=item[0].toUpperCase();
+      for(let i=1; i<item.length; ++i){
+          if(item[i]==" ")
+          { str+= "_";
+          }
+          else{
+              str+=item[i].toUpperCase();
+          }
+      }
+
+      return str;
+  }
+
+  function toscreaming_kebabcase(item){
+      let str = "";
+      str+=item[0].toUpperCase();
+      for(let i=1; i<item.length; ++i){
+          if(item[i]==" ")
+          { str+= "-";
+          }
+          else{
+              str+=item[i].toUpperCase();
+          }
+      }
+      return str;
+  }
+    </script>
+  </body>
+</html>
